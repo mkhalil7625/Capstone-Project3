@@ -8,6 +8,8 @@ class BaseModel(Model):
     class Meta:
         database = db
 
+
+# represent an event in the database
 class Event(BaseModel):
 
     eventId=IntegerField(primary_key=True)
@@ -21,7 +23,7 @@ class Event(BaseModel):
         return f'ID {self.eventId}, Event Name: {self.eventName}, Date: {self.date}'
 
 
-
+# represent an item in the database
 class Items(BaseModel):
 
     itemId=IntegerField(primary_key=True)
@@ -38,7 +40,7 @@ class Items(BaseModel):
     #         (('itemType', 'price'), True)
     #     )
 
-
+# represent a sales record in the database
 class Sales(BaseModel):
 
     saleID=IntegerField(primary_key=True)

@@ -1,3 +1,5 @@
+# to crate and manage sales records for a team
+
 from menu import Menu
 import sales_store as store
 from sales_store import SalesError
@@ -28,6 +30,7 @@ def create_menu():
     menu.add_option('3', 'Add a Sales Record', add_sales_record)
     menu.add_option('4', 'Show all Sales Records', get_sales_records)
     menu.add_option('5', 'find quantity sold per item', quantity_sold)
+    menu.add_option(QUIT, 'Quit', quit_program())
     return menu
 
 
@@ -62,6 +65,8 @@ def quantity_sold():
 def get_sales_records():
     sales=store.get_all_records()
     ui.show_sales_records(sales)
+
+
 
 def show_all_events():
     events=store.get_all_events()

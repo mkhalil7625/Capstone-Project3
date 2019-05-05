@@ -3,33 +3,32 @@ from peewee import *
 from peewee import IntegrityError
 from dataclasses import dataclass,field
 
-@dataclass
-class SalesRecord:
-    event:str
-    date:str
-    quantity:int
-    type:str
 
-
-
+# To add events info
 def add_event(event):
     try:
         event.save()
     except IntegrityError as e:
         raise SalesError('Duplicate event name')from e
 
+
+# to add items info
 def add_item(item):
     try:
         item.save()
     except IntegrityError as e:
         raise SalesError("Duplicate item's info") from e
 
+
+# add a sales record
 def add_sales_record(sale):
     try:
         sale.save()
     except IntegrityError as e:
         raise SalesError("either event doesn't exist or item is not listed")
 
+
+# get all records info
 def get_all_records():
     query=(Sales
            .select(Sales.quantity.alias('quantity'), Event.eventName.alias('event'), Event.date.alias('date'),Items.itemType.alias('item'))
@@ -39,6 +38,8 @@ def get_all_records():
     #     print(rows)
     return query
 
+
+# to show quantities sold of each item and sort by rank
 def get_quantity_sold():
     # rank = fn.rank().over(order_by=[fn.SUM(Sales.quantity).desc()])
     query = (Sales

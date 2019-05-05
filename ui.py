@@ -15,6 +15,7 @@ def display_menu_get_choice(menu):
             print('Not a valid choice, try again.')
 
 def get_event_info():
+    # create a new event from user input and returns an Event
     eventName = input('Enter the location of the event: ')
     eventDate = input("Enter Event's date in YYYY-MM-DD format")
 
@@ -25,6 +26,7 @@ def get_event_info():
     return Event(eventName=eventName,date=eventDate)
 
 def get_item_info():
+    # create a new Item from user input and returns an Item
     type = input('Enter the Type of the Item: ')
     price=float(input('Enter Price Each: '))
     return Items(itemType=type, price=price)
@@ -33,6 +35,7 @@ def get_item_info():
 #
 # def get_item_id():
 def get_sales_record_info():
+    # create a new sales record from user input and returns a Sales
     print(store.get_all_events())
     event = int(input("Choose the applicable event's id: "))
     print(store.get_all_items())
@@ -42,11 +45,13 @@ def get_sales_record_info():
 
 
 def show_sales_records(query):
+    # show all sales records
     for record in query:
         print(f"For the {record['date']} event at {record['event']}, {record['quantity']} {record['item']} were sold" )
 
 
 def show_quantity_sold(query):
+    # show quantity sold per each item and their ranks(quantity wise)
     rank = 1
     for record in query:
 
